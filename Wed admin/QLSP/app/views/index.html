@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Quản lý sản phẩm</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./../../assets/css/style.css">
+</head>
+
+<body>
+  <div id="loader" class="loader" style="display: none;">
+    <div id="overlay"></div>
+    <div class="spinner rounded-circle"></div>
+
+  </div>
+  <div class="container">
+    <header class="display-4 my-4 text-center">Wed quản lý</header>
+    <!-- Phan tab menu -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" href="#DanhSachSP" role="tab" data-toggle="tab">Danh sách sản phẩm</a>
+      </li>
+    </ul>
+    <br />
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!--Danh sách sản phẩm -->
+      <div role="tabpanel" class="tab-pane in active" id="DanhSachSP">
+        <div class="row">
+          <div class="col-md-8">
+            <!-- BEGIN BUTTOM THÊM MỚI -->
+            <button id="btnThemSP" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+              <i class="fa fa-plus mr-1"></i>
+              Thêm Mới
+            </button>
+            <!-- END BUTTON THÊM MỚI -->
+          </div>
+          <div class="col-md-4">
+            <!-- BEGIN TÌM KIẾM -->
+            <div class="input-group mb-3">
+              <input id="search" type="text" class="form-control" placeholder="Nhập tên sản phẩm" aria-label="Recipient's username"
+                aria-describedby="basic-addon2" />
+              <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon2"><i class="fa fa-search"></i></span>
+              </div>
+            </div>
+            <!-- END TÌM KIẾM -->
+          </div>
+        </div>
+        <div class="clear-fix"></div>
+        <div class="tblSanPham" id="tblSanPham">
+          <!-- BEGIN TABLE SẢN PHẨM -->
+          <div class="table-responsive">
+            <table class="table table-bordered" style="text-align: center;">
+              <thead>
+                <tr>
+                  <th>STT</th>
+                  <th>Phân Loại</th>
+                  <th>Tên Sản Phẩm</th>
+                  <th>Giá</th>
+                  <th>Hình Ảnh</th>
+                  <th>Thông số kỹ thuật</th>
+                  <th>Mô Tả</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="tblDanhSachSP"></tbody>
+            </table>
+          </div>
+          <!-- END TABLE SẢN PHẨM -->
+        </div>
+        <br />
+      </div>
+      <!-- Kết thúc danh sách sản phẩm -->
+    </div>
+
+    <!--KetThuc Tabmenu-->
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 id="titleAdd" class="modal-title">Thêm sản phẩm</h4>
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="form-group">
+              <label>Tên Sản Phẩm</label>
+              <input id="TenSP" class="form-control" placeholder="Nhập tên sản phẩm" />
+              <div id="errorTen" class="text-danger" style="display:none;"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label>Giá</label>
+                <input id="GiaSP" class="form-control" placeholder="Nhập giá bán" />
+                <div id="errorGia" class="text-danger" style="display:none;"></div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label>Màn hình</label>
+                <input id="screenSP" class="form-control" placeholder="Nhập kích thước màn hình" />
+                <div id="errorScreen" class="text-danger" style="display:none;"></div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label>Camera sau</label>
+                <input id="backCameraSP" class="form-control" placeholder="Nhập chất lượng camera trước" />
+                <div id="errorBackCamera" class="text-danger" style="display:none;"></div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label>Camera trước</label>
+                <input id="frontCameraSP" class="form-control" placeholder="Nhập chất lượng camera sau" />
+                <div id="errorFrontCamera" class="text-danger" style="display:none;"></div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label>Hình Ảnh</label>
+                <input id="HinhSP" class="form-control" placeholder=" link ảnh" />
+                <div id="errorHinh" class="text-danger" style="display:none;"></div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="">Loại sản phẩm: </label>
+                <select class="form-control" id="loaiSP">
+                  <option value="" selected disabled>Vui Lòng chọn sản phẩm</option>
+                  <option value="Iphone">Iphone</option>
+                  <option value="Samsung">Samsung</option>
+                </select>
+                <div id="errorLoai" class="text-danger" style="display:none;"></div>
+              </div>
+              <div class="col-md-12 mb-3">
+                <label>Mô tả</label>
+                <textarea name="descSP" id="descSP" rows="3" class="form-control"></textarea>
+                <div id="errorMoTa" class="text-danger" style="display:none;"></div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-end mt-2">
+              <button id="btnClose" type="button" class="btn btn-danger mr-2" data-dismiss="modal">Đóng</button>
+              <button id="btnAdd" type="button" class="btn btn-primary">Thêm</button>
+              <button id="btnUpdate" type="button" class="btn btn-warning" style="display: none;">Cập Nhật</button>
+            </div>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer p-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="container"></div>
+  <style>
+    #container {
+      min-width: 310px;
+      max-width: 800px;
+      height: 400px;
+      margin: 0 auto;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/series-label.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.0/axios.min.js"
+    integrity="sha512-OdkysyYNjK4CZHgB+dkw9xQp66hZ9TLqmS2vXaBrftfyJeduVhyy1cOfoxiKdi4/bfgpco6REu6Rb+V2oVIRWg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script type="module" src="./../controllers/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>test - Wavy</title>
+    <link
+      rel="shortcut icon"
+      href="./src/img/img scss01.png"
+      type="image/x-icon"
+    />
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- fontawesome  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- main  -->
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://bbbootstrap.com/snippets/mega-menu-navigation-bar-icons-71070657"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./src/css/style.css" />
+  </head>
+
+  <body>
+    <section id="itemDevices">
+      <div class="banner">
+        <div class="main-card" id="productItems"></div>
+        <div class="nav">
+          <button id="myBtn" class="btnCart" onclick="sideNav(1)">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </button>
+          <span class="total-qty">0</span>
+        </div>
+        <div onclick="sideNav(0)" class="cover" style="display: none"></div>
+        <div class="cover purchase-cover"></div>
+        <div class="cart">
+          <div class="side-nav">
+            <button onclick="sideNav(0)"><i class="fas fa-times"></i></button>
+            <h2>Cart</h2>
+            <div class="cart-items">
+              <span class="empty-cart"
+                >Looks Like You Haven't Added Any Product In The Cart</span
+              >
+            </div>
+            <div class="final">
+              <strong>Total: $ <span class="total">0</span></strong>
+              <div class="action">
+                <button onclick="buy(1)" class="btn buy">
+                  Purchase
+                  <i class="fas fa-credit-card" style="color: #6665dd"></i>
+                </button>
+                <button onclick="clearCart()" class="btn clear">
+                  Clear Cart <i class="fas fa-trash" style="color: #bb342f"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stock-limit">
+          <em>You Can Only Buy 10 Items For Each Product</em>
+          <button class="btn-ok" onclick="limitPurchase(this)">Okay</button>
+        </div>
+
+        <div class="order-now"></div>
+      </div>
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div id="cartList"></div>
+          <span style="color: black; text-align: right"
+            >Total: <span id="totalCart"></span
+          ></span>
+          <button id="btnClick" style="color: black">Purchase</button>
+          <button id="btnClear" class="btn btn-danger" onclick="clearCart">
+            Clear
+          </button>
+        </div>
+
+        <!-- Modal content -->
+      </div>
+
+      <div id="buyModal" class="modal">
+        <div class="modal-content smallModal">
+          <span style="text-align: center;">your order has been placed</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- axios -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"
+      integrity="sha512-zJYu9ICC+mWF3+dJ4QC34N9RA0OVS1XtPbnf6oXlvGrLGNB8egsEzu/5wgG90I61hOOKvcywoLzwNmPqGAdATA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- <script src="./src/layout/layout.js"></script> -->
+    <script src="./src/controller/product.js"></script>
+    <script src="./src/controller/productService.js"></script>
+    <script src="./src/controller/main.js"></script>
+  </body>
+</html>
